@@ -7,23 +7,12 @@ const app = express();
 
 const port = process.env.API_PORT || 3001;
 const appPort = process.env.SERVER_PORT || 3000;
-const appOrigin = authConfig.appOrigin || `http://localhost:${appPort}`;
 
-if (
-  !authConfig.domain ||
-  !authConfig.audience ||
-  authConfig.audience === "YOUR_API_IDENTIFIER"
-) {
-  console.log(
-    "Exiting: Please make sure that auth_config.json is in place and populated with valid domain and audience values"
-  );
 
-  process.exit();
-}
 
 app.use(morgan("dev"));
 app.use(helmet());
-app.use(cors({ origin: appOrigin, origin: 8100 }));
+app.use(cors({origin: 8100 }));
 
 
 app.get("/api/external", (req, res) => {
