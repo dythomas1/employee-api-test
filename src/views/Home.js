@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 
-import Hero from "../components/Hero";
+import Hero from "../components/Hero.tsx";
 import Content from "../components/Content";
 
 const Home = () => (

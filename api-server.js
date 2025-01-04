@@ -28,16 +28,23 @@ app.use(helmet());
 app.use(cors({ origin: appOrigin, origin: 8100 }));
 
 
-const checkJwt = auth({
-  audience: "https://api-dev.spotmine.io",
-  issuerBaseURL: `https://spotmine-dev.auth0.com/`,
-  algorithms: ["RS256"],
-});
+// const checkJwt = auth({
+//   audience: "https://api-dev.spotmine.io",
+//   issuerBaseURL: `https://spotmine-dev.auth0.com/`,
+//   algorithms: ["RS256"],
+// });
 
-app.get("/api/external", checkJwt, (req, res) => {
+app.get("/api/external", (req, res) => {
   res.send({
     msg: "Your access token was successfully validated!",
   });
 });
+
+app.get("/api/messages/public", (req, res) => {
+  res.send({
+    message: "Hello from a public endpoint! You don't need to be authenticated to see this.",
+  });
+});
+
 
 app.listen(port, () => console.log(`API Server listening on port ${port}`));
