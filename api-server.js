@@ -2,8 +2,6 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const helmet = require("helmet");
-const { auth } = require("express-oauth2-jwt-bearer");
-const authConfig = require("./src/auth_config.json");
 
 const app = express();
 
@@ -27,12 +25,6 @@ app.use(morgan("dev"));
 app.use(helmet());
 app.use(cors({ origin: appOrigin, origin: 8100 }));
 
-
-// const checkJwt = auth({
-//   audience: "https://api-dev.spotmine.io",
-//   issuerBaseURL: `https://spotmine-dev.auth0.com/`,
-//   algorithms: ["RS256"],
-// });
 
 app.get("/api/external", (req, res) => {
   res.send({
