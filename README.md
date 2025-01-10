@@ -13,3 +13,5 @@ This assumes you have node.js installed of course.
 The api has been called as you can see it from the home screen.
 
 So click the button if you want to call the api again.
+
+A quick test for n8n
